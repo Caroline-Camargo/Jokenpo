@@ -1,0 +1,24 @@
+.choice-option {
+    transition: transform 0.3s ease-in-out;
+}
+
+.choice-option:hover {
+    transform: scale(1.1);
+}
+
+.choice-icon {
+    font-size: 6rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.choice-icon:hover {
+    color: #007bff;
+}
+
+#title {
+    font-size: 3rem;
+    color: #D67D00;
+    font-weight: bold;
+    margin-bottom: 3rem;
+}
