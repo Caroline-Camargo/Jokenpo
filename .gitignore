@@ -1,0 +1,92 @@
+# Java
+*.class
+*.jar
+*.war
+*.ear
+*.iml
+*.project
+*.classpath
+*.factorypath
+*.prefs
+*.settings/
+
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+
+# Spring Boot specific
+spring.log
+
+# Hibernate specific
+.hibernate/
+.hibernate-*.properties
+
+# Liquibase specific
+liquibase.properties
+liquibase/
+
+# VVV
+vvv/
+
+# Logs
+*.log
+
+# Docker
+*.pid
+*.seed
+*.pid.lock
+logs/
+node_modules/
+docker-compose.override.yml
+
+# PostgreSQL
+pgdata/
+backend/data/postgres
+postgresql.conf
+pg_hba.conf
+*.pgpass
+
+# Node.js/TypeScript/React
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+.pnp/
+.pnp.js
+.cache/
+*.tsbuildinfo
+
+# Babel
+.babelrc
+.babelrc.js
+.babelrc.json
+babel.config.js
+babel.config.json
+babelignore
+
+# Webpack
+dist/
+webpack.config.js
+webpack.config.ts
+
+# Environment Variables
+.env
+.env.local
+.env.*.local
+
+# IDEs/Editors
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db

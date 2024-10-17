@@ -20,10 +20,10 @@ public class JokenpoMatchModel implements Serializable {
     private String player1;
     private String player2;
 
-    private String player1Choice;
-    private String player2Choice;
+    private String choice1;
+    private String choice2;
 
     private String winner;
 
-    private LocalDateTime matchDate;
+    private LocalDateTime date;
 }

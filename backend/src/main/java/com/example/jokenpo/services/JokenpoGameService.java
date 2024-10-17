@@ -19,7 +19,13 @@ public class JokenpoGameService {
         String result = checkVitory(namePlayer1, player1option, namePlayer2, player2option);
         LocalDateTime matchDate = LocalDateTime.now();
 
-        JokenpoMatchRecordDto matchRecordDto = new JokenpoMatchRecordDto(namePlayer1, player1option, namePlayer2, player2option, result, matchDate);
+        System.out.println("Player 1: " + namePlayer1 + " - " + player1option);
+        System.out.println("Player 2: " + namePlayer2 + " - " + player2option);
+        System.out.println("Winner: " + result);
+        System.out.println("Match Date: " + matchDate);
+
+
+        JokenpoMatchRecordDto matchRecordDto = new JokenpoMatchRecordDto(namePlayer1, namePlayer2, player1option, player2option, result, matchDate);
         jokenpoMachService.saveMatch(matchRecordDto);
 
         return result;

@@ -6,11 +6,11 @@ import jakarta.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 public record JokenpoMatchRecordDto(
-        @NotBlank String player1,
-        @NotBlank String player2,
-        String player1Choice,
-        String player2Choice,
-        String winner,
-        @NotNull LocalDateTime matchDate
+        @NotNull @NotBlank String player1,
+        @NotNull @NotBlank String player2,
+        @NotNull String choice1,
+        @NotNull String choice2,
+        @NotNull String winner,
+        @NotNull LocalDateTime date
 ) {
 }
