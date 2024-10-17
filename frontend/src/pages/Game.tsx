@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './Game.css';  
+import './Game.css';
 
 const Play: React.FC = () => {
   const [name, setName] = useState('');
@@ -24,7 +24,7 @@ const Play: React.FC = () => {
   return (
     <div className="container mt-5">
       <h1 className="text-center" id='title'>Jogo de Jokenpo</h1>
-      
+
       <div className="row justify-content-center mb-4">
         <div className="col-md-6 text-center">
           <div className="form-group">

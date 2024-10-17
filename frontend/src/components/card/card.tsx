@@ -13,21 +13,19 @@ export function Card({ id, player1, player2, choice1, choice2, winner, date }: C
   return (
     <div className="card mb-3 custom-card">
       <div className="card-body">
-      <h5 className="card-title text-center font-weight-bold">
+        <h5 className="card-title text-center font-weight-bold">
           Partida {id}
         </h5>
         <div className="row">
           <div className="col text-center">
-            <p><strong> Jogador 1:</strong>
-              <p>{player1}</p>
+            <p><strong> Jogador 1: </strong>
+              {player1}
             </p>
             <p><strong>Escolha: </strong>{choice1}</p>
           </div>
-          
+
           <div className="col text-center">
-            <p><strong> Jogador 2:</strong>
-              <p>{player2}</p>
-            </p>
+            <p><strong> Jogador 2: </strong>{player2}</p>
             <p><strong>Escolha: </strong>{choice2}</p>
           </div>
         </div>
