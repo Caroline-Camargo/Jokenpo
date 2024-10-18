@@ -7,3 +7,12 @@ export interface MatchData {
     winner: string,
     date: Date
 }
+
+export interface MatchDataPost {
+    player1: string,
+    choice1: string,
+}
+
+export interface MatchDataResult {
+    winner: string
+}

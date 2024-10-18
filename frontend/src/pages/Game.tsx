@@ -1,24 +1,38 @@
 import React, { useState } from 'react';
-import axios from 'axios';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { useSaveMatchData } from '../hooks/useSaveMatchData'; 
 import './Game.css';
 
-const Play: React.FC = () => {
+const Game: React.FC = () => {
   const [name, setName] = useState('');
-  const [result, setResult] = useState('');
+  const [playerChoice, setPlayerChoice] = useState<string | null>(null);
+  const [result, setResult] = useState<string | null>(null);
 
-  const handleChoice = async (choice: string) => {
-    if (!name) {
-      setResult('Por favor, insira seu nome antes de jogar.');
-      return;
-    }
+  const { mutate, isError, error, isSuccess } = useSaveMatchData();
 
-    try {
-      const response = await axios.get(`http://localhost:8080/jokenpo/play/${name}/${choice}`);
-      setResult(response.data);
-    } catch (error) {
-      setResult('Ocorreu um erro. Verifique sua escolha e tente novamente.');
-    }
+  const handleChoice = (choice: string) => {
+    setPlayerChoice(choice);
+
+    mutate(
+      { player1: name, choice1: choice }, 
+      {
+        onSuccess: (data) => {
+          if (typeof data === 'string' && data === 'draw') {
+            setResult('Empate!');
+          }
+          else {
+            if (typeof data === 'string' && data === 'Computer') {
+              setResult('Você perdeu, o vencedor foi o computador');
+            }
+            else {
+              setResult('Parabéns, Você Ganhou!')
+            }
+          }  
+        },
+        onError: (error) => {
+          console.error('Erro ao salvar a partida:', error);
+        }
+      }
+    );
   };
 
   return (
@@ -30,6 +44,7 @@ const Play: React.FC = () => {
           <div className="form-group">
             <label htmlFor="name">Digite seu nome:</label>
             <input
+              autoComplete='name'
               type="text"
               id="name"
               className="form-control"
@@ -77,10 +92,18 @@ const Play: React.FC = () => {
         </div>
       </div>
 
-      {result && (
+      {isError && (
         <div className="row justify-content-center mt-4">
           <div className="col-md-6 text-center">
-            <h4>Resultado: {result}</h4>
+            <p>Ocorreu um erro ao salvar a partida</p>
+          </div>
+        </div>
+      )}
+
+      {isSuccess && result && (
+        <div className="row justify-content-center mt-4">
+          <div className="col-md-6 text-center">
+            <h4>{result}</h4>
           </div>
         </div>
       )}
@@ -88,4 +111,4 @@ const Play: React.FC = () => {
   );
 };
 
-export default Play;
+export default Game;
