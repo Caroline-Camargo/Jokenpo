@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import History from '../pages/History';
-import Game from '../pages/Game';
+import History from '../pages/history/History';
+import Game from '../pages/game/Game';
 
 const AppRoutes: React.FC = () => {
   return (

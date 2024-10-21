@@ -1,4 +1,5 @@
-import './card.css'
+import './card.css';
+
 interface CardProps {
   id: number;
   player1: string;
@@ -7,25 +8,26 @@ interface CardProps {
   choice2: string;
   winner: string;
   date: Date;
+  onDelete: (id: number) => void; 
 }
 
-export function Card({ id, player1, player2, choice1, choice2, winner, date }: CardProps) {
+export function Card({ id, player1, player2, choice1, choice2, winner, date, onDelete }: CardProps) {
   return (
-    <div className="card mb-3 custom-card">
-      <div className="card-body">
+    <div className="card mb-3">
+      <div className="card-body position-relative custom-card">
+        <button className="delete-btn" onClick={() => onDelete(id)}>
+          🗑️
+        </button>
         <h5 className="card-title text-center font-weight-bold">
           Partida {id}
         </h5>
         <div className="row">
           <div className="col text-center">
-            <p><strong> Jogador 1: </strong>
-              {player1}
-            </p>
+            <p><strong> Jogador 1:</strong><br/>{player1}</p>
             <p><strong>Escolha: </strong>{choice1}</p>
           </div>
-
           <div className="col text-center">
-            <p><strong> Jogador 2: </strong>{player2}</p>
+            <p><strong> Jogador 2: </strong><br/>{player2}</p>
             <p><strong>Escolha: </strong>{choice2}</p>
           </div>
         </div>

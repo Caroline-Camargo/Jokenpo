@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/header/Header';
-import Play from './pages/Game';
-import History from './pages/History';
+import Play from './pages/game/Game';
+import History from './pages/history/History';
 
 const App: React.FC = () => {
   return (
