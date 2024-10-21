@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { useSaveMatchData } from '../../hooks/useSaveMatchData'; 
+import { useSaveMatchData } from '../../hooks/useSaveMatchData';
 import './Game.css';
 
 const Game: React.FC = () => {
   const [name, setName] = useState('');
   const [playerChoice, setPlayerChoice] = useState<string | null>(null);
   const [result, setResult] = useState<string | null>(null);
+  const [computerChoice, setComputerChoice] = useState<string | null>(null);
 
   const { mutate, isError, error, isSuccess } = useSaveMatchData();
 
@@ -13,20 +14,26 @@ const Game: React.FC = () => {
     setPlayerChoice(choice);
 
     mutate(
-      { player1: name, choice1: choice }, 
-      {
+      { player1: name, choice1: choice },
+      { 
         onSuccess: (data) => {
-          if (typeof data === 'string' && data === 'draw') {
+          if (typeof data === 'string' && data === 'empate') {
             setResult('Empate!');
           }
           else {
-            if (typeof data === 'string' && data === 'Computer') {
+            setComputerChoice(data.choice2);
+
+            if (typeof data.winner === 'string' && data.winner === 'Computador') {
               setResult('Você perdeu, o vencedor foi o computador');
             }
-            else {
-              setResult('Parabéns, Você Ganhou!')
+            else if (typeof data.winner === 'string' && data.winner === 'empate') {
+              setResult('Empate!');
             }
-          }  
+            else {
+              setResult('Parabéns, Você Ganhou!');
+            }
+          }
+          console.log('Jogador:', data);
         },
         onError: (error) => {
           console.error('Erro ao salvar a partida:', error);
@@ -62,7 +69,7 @@ const Game: React.FC = () => {
             role="img"
             aria-label="Pedra"
             className="choice-icon"
-            onClick={() => handleChoice('rock')}
+            onClick={() => handleChoice('pedra')}
           >
             ✊
           </span>
@@ -73,7 +80,7 @@ const Game: React.FC = () => {
             role="img"
             aria-label="Papel"
             className="choice-icon"
-            onClick={() => handleChoice('paper')}
+            onClick={() => handleChoice('papel')}
           >
             ✋
           </span>
@@ -84,7 +91,7 @@ const Game: React.FC = () => {
             role="img"
             aria-label="Tesoura"
             className="choice-icon"
-            onClick={() => handleChoice('scissors')}
+            onClick={() => handleChoice('tesoura')}
           >
             ✌️
           </span>
@@ -104,6 +111,7 @@ const Game: React.FC = () => {
         <div className="row justify-content-center mt-4">
           <div className="col-md-6 text-center">
             <h4>{result}</h4>
+            <em>Sua escolha: {playerChoice} - Escolha do Computador: {computerChoice}</em>
           </div>
         </div>
       )}

@@ -14,50 +14,51 @@ import java.util.Optional;
 
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
+@RequestMapping("/jokenpo/match")
 public class JokenpoMatchController {
     @Autowired
     JokenpoMachService jokenpoMachService;
 
-    @PostMapping("/jokenpo/match")
+    @PostMapping()
     public ResponseEntity<JokenpoMatchModel> createMatch(@RequestBody @Valid JokenpoMatchRecordDto matchRecordDto) {
         return ResponseEntity.status(HttpStatus.CREATED).body(jokenpoMachService.saveMatch(matchRecordDto));
     }
 
-    @GetMapping("/jokenpo/match")
+    @GetMapping()
     public ResponseEntity<List<JokenpoMatchModel>> getAllMatches() {
         return ResponseEntity.status(HttpStatus.OK).body(jokenpoMachService.getAllMatches());
     }
 
-    @GetMapping("/jokenpo/match/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Object> getOneMatch(@PathVariable(value = "id") Long id) {
         Optional<JokenpoMatchModel> matchOptional = jokenpoMachService.getOneMatch(id);
         if (matchOptional.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Match not found");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Partida não encontrada");
         } else {
             return ResponseEntity.status(HttpStatus.OK).body(matchOptional.get());
         }
     }
 
-    @PutMapping("/jokenpo/match/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Object> updateMatch(@PathVariable(value = "id") Long id,
                                               @RequestBody @Valid JokenpoMatchRecordDto matchRecordDto) {
         Optional<JokenpoMatchModel> matchOptional = jokenpoMachService.getOneMatch(id);
         if (matchOptional.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Match not found");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Partida não encontrada");
         } else {
             var matchModel = matchOptional.get();
             return ResponseEntity.status(HttpStatus.CREATED).body(jokenpoMachService.updateMatch(matchModel, matchRecordDto));
         }
     }
 
-    @DeleteMapping("/jokenpo/match/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Object> deleteMatch(@PathVariable(value = "id") Long id) {
         Optional<JokenpoMatchModel> matchOptional = jokenpoMachService.getOneMatch(id);
         if (matchOptional.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Match not found");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Partida não encontrada");
         } else {
             jokenpoMachService.deleteMatch(id);
-            return ResponseEntity.status(HttpStatus.OK).body("Match deleted successfully");
+            return ResponseEntity.status(HttpStatus.OK).body("Partida deletada com sucesso");
         }
     }
 }

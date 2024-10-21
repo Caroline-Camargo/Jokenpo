@@ -12,57 +12,51 @@ public class JokenpoGameService {
     @Autowired
     private JokenpoMachService jokenpoMachService;
 
-    public String playGame(String namePlayer1, String player1option) {
-        String namePlayer2 = "Computer";
+    public JokenpoMatchRecordDto playGame(String namePlayer1, String player1option) {
+        String namePlayer2 = "Computador";
         String player2option = computerPlay();
         player1option = convertOption(player1option);
         String result = checkVitory(namePlayer1, player1option, namePlayer2, player2option);
         LocalDateTime matchDate = LocalDateTime.now();
 
-        System.out.println("Player 1: " + namePlayer1 + " - " + player1option);
-        System.out.println("Player 2: " + namePlayer2 + " - " + player2option);
-        System.out.println("Winner: " + result);
-        System.out.println("Match Date: " + matchDate);
-
-
         JokenpoMatchRecordDto matchRecordDto = new JokenpoMatchRecordDto(namePlayer1, namePlayer2, player1option, player2option, result, matchDate);
         jokenpoMachService.saveMatch(matchRecordDto);
 
-        return result;
+        return matchRecordDto;
     }
     public String computerPlay() {
-        String[] options = {"rock", "paper", "scissors"};
+        String[] options = {"pedra", "papel", "tesoura"};
         int randomIndex = (int) (Math.random() * options.length);
         return options[randomIndex];
     }
 
     public String convertOption(String option) {
-        if (option.equals("rock") || option.equals("paper") || option.equals("scissors")) {
+        if (option.equals("pedra") || option.equals("papel") || option.equals("tesoura")) {
             return option;
         }
-        if (option.equals("pedra")) {
-            return "rock";
+        if (option.equals("rock")) {
+            return "pedra";
         }
-        if (option.equals("papel")) {
-            return "paper";
+        if (option.equals("paper")) {
+            return "papel";
         }
-        if (option.equals("tesoura")) {
-            return "scissors";
+        if (option.equals("scissors")) {
+            return "tesoura";
         }
-        return "Invalid option!";
+        return null;
     }
 
     public String checkVitory(String namePlayer1, String player1option, String namePlayer2, String player2option) {
         if (player1option.equals(player2option)) {
-            return "draw";
+            return "empate";
         }
-        if (player1option.equals("rock") && player2option.equals("scissors")) {
+        if (player1option.equals("pedra") && player2option.equals("tesoura")) {
             return namePlayer1;
         }
-        if (player1option.equals("scissors") && player2option.equals("paper")) {
+        if (player1option.equals("tesoura") && player2option.equals("papel")) {
             return namePlayer1;
         }
-        if (player1option.equals("paper") && player2option.equals("rock")) {
+        if (player1option.equals("papel") && player2option.equals("pedra")) {
             return namePlayer1;
         }
         return namePlayer2;

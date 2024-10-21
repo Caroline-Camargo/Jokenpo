@@ -20,15 +20,15 @@ const History: React.FC = () => {
       matchData.player1.toLowerCase().includes(searchTerm.toLowerCase())
 
     const matchesResult = resultFilter === '' ||
-      (resultFilter === 'vitoria' && matchData.winner.toLowerCase() !== 'computer' && matchData.winner.toLowerCase() !== 'draw') ||
-      (resultFilter === 'derrota' && matchData.winner.toLowerCase() == 'computer' && matchData.winner.toLowerCase() !== 'draw') ||
-      (resultFilter === 'empate' && matchData.winner.toLowerCase() === 'draw');
+      (resultFilter === 'vitoria' && matchData.winner.toLowerCase() !== 'computador' && matchData.winner.toLowerCase() !== 'empate') ||
+      (resultFilter === 'derrota' && matchData.winner.toLowerCase() == 'computador' && matchData.winner.toLowerCase() !== 'empate') ||
+      (resultFilter === 'empate' && matchData.winner.toLowerCase() === 'empate');
 
     return matchesSearch && matchesResult;
   })
 
   .sort((a, b) => b.id - a.id);
-  
+
   return (
     <div className="container">
       <h1 className="text-center" id="title">Histórico de Partidas Jokenpo</h1>

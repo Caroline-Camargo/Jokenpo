@@ -12,7 +12,3 @@ export interface MatchDataPost {
     player1: string,
     choice1: string,
 }
-
-export interface MatchDataResult {
-    winner: string
-}
