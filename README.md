@@ -15,6 +15,7 @@ Nesta aplicação foi implementado o modo contra o computador, onde o jogador en
 - *🐘 PostgreSQL*: Banco de dados utilizado.
 - *🔄 Liquibase*: Ferramenta para versionamento de banco de dados.
 - *🔧 Maven*: Gerencia dependências e automatiza o processo de build do projeto.
+- *🧪 JUnit*: Testes unitários em Java.
 
 ### Frontend
 - *⚛ React*: Biblioteca JavaScript para construção de interfaces de usuário.
@@ -65,6 +66,14 @@ Nesta aplicação foi implementado o modo contra o computador, onde o jogador en
     sh
     npm start
     
+
+### Execução dos Testes com JUnit
+1. Abra um terminal ou prompt de comando.
+2. Navegue até o diretório raiz do seu projeto, onde o arquivo pom.xml está localizado.
+3. Execute o seguinte comando:
+  sh
+  mvn test
+
 
 ## 📡 Endpoints da API
 
