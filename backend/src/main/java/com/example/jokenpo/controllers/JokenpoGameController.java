@@ -28,6 +28,9 @@ public class JokenpoGameController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("O jogador precisa escolher uma opção (pedra, papel ou tesoura).");
         }
         JokenpoMatchRecordDto result = jokenpoGameService.playGame(matchRecordDto.player1(), matchRecordDto.choice1());
+        if (result == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Opção inválida. Escolha entre pedra, papel ou tesoura.");
+        }
         return ResponseEntity.status(HttpStatus.OK).body(result);
     }
 

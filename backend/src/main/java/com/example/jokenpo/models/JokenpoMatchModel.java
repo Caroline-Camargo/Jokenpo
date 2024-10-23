@@ -7,7 +7,8 @@ import lombok.Setter;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
-@Getter @Setter
+@Getter
+@Setter
 @Entity
 @Table(name = "JOKENPO_MATCH")
 public class JokenpoMatchModel implements Serializable {

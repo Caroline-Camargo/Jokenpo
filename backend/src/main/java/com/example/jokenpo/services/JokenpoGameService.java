@@ -16,6 +16,11 @@ public class JokenpoGameService {
         String namePlayer2 = "Computador";
         String player2option = computerPlay();
         player1option = convertOption(player1option);
+
+        if (player1option == null) {
+            return null;
+        }
+
         String result = checkVitory(namePlayer1, player1option, namePlayer2, player2option);
         LocalDateTime matchDate = LocalDateTime.now();
 
@@ -24,6 +29,7 @@ public class JokenpoGameService {
 
         return matchRecordDto;
     }
+
     public String computerPlay() {
         String[] options = {"pedra", "papel", "tesoura"};
         int randomIndex = (int) (Math.random() * options.length);
