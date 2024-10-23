@@ -129,3 +129,10 @@ A API do backend possui os seguintes endpoints principais:
 3. O backend remove a palavra do banco de dados.
 
 |   Atualização do conteúdo de cada partida só pode ser realizada via endpoint
+
+
+## ▶️ Testes no Postman
+
+Você pode rodar os testes da coleção no Postman clicando no botão abaixo:
+
+[<img src="https://run.pstmn.io/button.svg" alt="Run In Postman" style="width: 128px; height: 32px;">](https://god.gw.postman.com/run-collection/38568266-5f678e57-531e-483f-9f5f-50b6867e5505?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D38568266-5f678e57-531e-483f-9f5f-50b6867e5505%26entityType%3Dcollection%26workspaceId%3Dc6062a23-2dcc-4d80-8515-779b4e5a68a7)
