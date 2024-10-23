@@ -27,7 +27,6 @@ public class GameControllerTests {
         String[] validChoices = {"pedra", "papel", "tesoura"};
         String[] validResults = {"Carol", "Computador", "empate"};
         LocalDateTime timeNow = LocalDateTime.now();
-        System.out.println("timeNow: " + timeNow);
 
         webTestClient
                 .post()
@@ -46,7 +45,6 @@ public class GameControllerTests {
                 })
                 .jsonPath("$.date").value(date -> {
                     LocalDateTime matchDate = LocalDateTime.parse(date.toString());
-                    System.out.println("matchDate: " + matchDate);
                     assertTrue(matchDate.isAfter(timeNow) || matchDate.isEqual(timeNow), "The match date should be either in the future or equal to the current time.");
                 });
     }

@@ -18,7 +18,6 @@ public class JokenpoMachService {
     public JokenpoMatchModel saveMatch(JokenpoMatchRecordDto matchRecordDto) {
         var matchModel = new JokenpoMatchModel();
         BeanUtils.copyProperties(matchRecordDto, matchModel);
-        System.out.println("ID: " + matchModel.getId());
         return jokenpoMatchRepository.save(matchModel);
     }
 
