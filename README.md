@@ -1,5 +1,11 @@
 # ✊✋✌️ Jokenpo ✊✋✌️
-Jogo Jokenpo (pedra, papel e tesoura) desenvolvido em Java com o framework Spring Boot
+O jogo de Jokenpo é jogado entre dois jogadores, onde cada um escolhe uma opção entre "pedra", "papel" ou "tesoura". O objetivo é determinar o vencedor com base nas regras clássicas:
+
+  - Pedra vence Tesoura.
+  - Tesoura vence Papel.
+  - Papel vence Pedra.
+
+Nesta aplicação foi implementado o modo contra o computador, onde o jogador enfrenta a máquina! 🤖
 
 ## 🚀 Tecnologias Utilizadas
 
@@ -65,6 +71,7 @@ Jogo Jokenpo (pedra, papel e tesoura) desenvolvido em Java com o framework Sprin
 A API do backend possui os seguintes endpoints principais:
 
 ### Jokenpo Game
+
 - **POST /jokenpo/play**: Inicia uma rodada de Jokenpo enviando os dados do jogador e sua escolha (pedra, papel ou tesoura).
 
     Exemplo de JSON:
@@ -77,6 +84,7 @@ A API do backend possui os seguintes endpoints principais:
 
 
 ### Jokenpo Match
+
 - **POST /jokenpo/match**: Cria um novo registro de partida.
 
     Exemplo de JSON:
@@ -98,24 +106,26 @@ A API do backend possui os seguintes endpoints principais:
 
 ## 🎮 Fluxo do Jogo
 
-![image](https://github.com/user-attachments/assets/730d9ada-4a15-41cb-9c44-a45c7b542cc9)
+<img width="956" alt="image" src="https://github.com/user-attachments/assets/70b11e29-45d6-4905-9169-c80d02078ad1">
 
 1. O jogador inicia preenchendo seu nome e faz sua jogada
 2. O backend retorna retorna um resultado com base na jogada do jogador e a lógica pré-definida no backend. Como o jogo é contra a máquina, a jogada do computador será gerada automaticamente 
 
-## 📝 Gerenciamento de Palavras
-
-![image](https://github.com/user-attachments/assets/964d48b1-36d2-4981-ba0d-8bbe5bb2152b)
 
 ### 👀 Visualização do histórico
+
+<img width="959" alt="image" src="https://github.com/user-attachments/assets/93bdc6d2-4da2-4cef-8e9d-0b47faba1a45">
+
 1. O jogador acessa a página de histórico de partidas clicando na aba "Histórico de Partidas".
 2. O backend retorna o histórico de partidas cadastradas no banco.
 3. É possível ver a lista de partidas, incluindo nome dos jogadores, qual foi a opção de jogada escolhida, o vencedor da partida e a data que a partida ocorreu.
+4. Além disso, é possível filtrar a lista de partidas por nome do jogador e por vitória, derrota ou empate.
 
 
 ### ❌ Deletando Histórico de partidas
+
 1. Na aba "Histórico de Partidas", localize a partida que deseja excluir.
-2. Clique no botão de uma lixeira no canto superior esquerdo da partida.
+2. Clique no botão de uma lixeira no canto superior direito da partida.
 3. O backend remove a palavra do banco de dados.
 
 |   Atualização do conteúdo de cada partida só pode ser realizada via endpoint
