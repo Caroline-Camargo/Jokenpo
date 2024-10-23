@@ -5,6 +5,7 @@ O jogo de Jokenpo é jogado entre dois jogadores, onde cada um escolhe uma opç�
   - Tesoura vence Papel.
   - Papel vence Pedra.
 
+Nesta aplicação foi implementado o modo contra o computador, onde o jogador enfrenta a máquina! 🤖
 
 ## 🚀 Tecnologias Utilizadas
 
